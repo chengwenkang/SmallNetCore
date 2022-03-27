@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallNetCore.UI", "SmallNetCore.UI\SmallNetCore.UI.csproj", "{C3D53E9C-7BB6-4CFB-AFB4-C7CF11F9AD2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallNetCore.Models", "SmallNetCore.Models\SmallNetCore.Models.csproj", "{38535FAE-934E-455F-ABE0-F94FC8A6F3BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3D53E9C-7BB6-4CFB-AFB4-C7CF11F9AD2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D53E9C-7BB6-4CFB-AFB4-C7CF11F9AD2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D53E9C-7BB6-4CFB-AFB4-C7CF11F9AD2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D53E9C-7BB6-4CFB-AFB4-C7CF11F9AD2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38535FAE-934E-455F-ABE0-F94FC8A6F3BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38535FAE-934E-455F-ABE0-F94FC8A6F3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38535FAE-934E-455F-ABE0-F94FC8A6F3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38535FAE-934E-455F-ABE0-F94FC8A6F3BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9EC590C-C973-4BFC-BA56-217A3BE7D64E}
+	EndGlobalSection
+EndGlobal
