@@ -4,6 +4,16 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmallNetCore.Extensions\SmallNetCore.Extensions.csproj" />
+    <ProjectReference Include="..\SmallNetCore.Models\SmallNetCore.Models.csproj" />
+  </ItemGroup>
 
 </Project>

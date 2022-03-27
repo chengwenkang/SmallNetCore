@@ -1,4 +1,4 @@
-﻿namespace SmallNetCore.Models
+﻿namespace SmallNetCore.Remotes
 {
     public class Class1
     {
