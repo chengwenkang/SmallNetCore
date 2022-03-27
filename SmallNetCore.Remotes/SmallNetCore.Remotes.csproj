@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="AlipayServices\" />
+    <Folder Include="TencentServices\" />
+  </ItemGroup>
+
 </Project>

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SmallNetCore.Extensions
+﻿namespace SmallNetCore.Extensions
 {
+    /// <summary>
+    /// 环境扩展
+    /// </summary>
     public class EnvironmentExt
     {
         /// <summary>
