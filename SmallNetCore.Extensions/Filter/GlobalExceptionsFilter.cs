@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using SmallNetCore.Common.Serialize;
 using SmallNetCore.Models.Enums;
 using SmallNetCore.Models.ViewModels.Base;
-using System.Net;
 using System.Web.Http;
 
 namespace SmallNetCore.Extensions.Filter
