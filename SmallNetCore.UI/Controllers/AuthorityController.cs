@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SmallNetCore.Common.Utils;
 using SmallNetCore.IServices.Authority;
 using SmallNetCore.Models.Base;
 using SmallNetCore.Models.DBModels;
@@ -80,6 +81,28 @@ namespace SmallNetCore.UI.Controllers
         public BaseResponse<TokenModel> GetUserInfo(int i)
         {
             return loginService.GetUserInfo(i);
+        }
+
+        /// <summary>
+        /// TestCache
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public Article TestCache(int i)
+        {
+            var model = new Article
+            {
+                CreateTime = DateTime.Now,
+                Id = 1,
+                Remark = "ccesefe"
+            };
+
+            CacheHelper.SetCache("sds", model, 3);
+
+            var re = CacheHelper.GetCache("sds");
+
+            return (Article)re;
         }
     }
 }
