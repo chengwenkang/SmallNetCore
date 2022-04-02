@@ -8,12 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SmallNetCore.Extensions\SmallNetCore.Extensions.csproj" />
+    <ProjectReference Include="..\SmallNetCore.IServices\SmallNetCore.IServices.csproj" />
     <ProjectReference Include="..\SmallNetCore.Models\SmallNetCore.Models.csproj" />
+    <ProjectReference Include="..\SmallNetCore.Services\SmallNetCore.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

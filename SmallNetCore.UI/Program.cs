@@ -1,38 +1,60 @@
-using Microsoft.OpenApi.Models;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authorization;
 using SmallNetCore.Extensions;
+using SmallNetCore.Extensions.Filter;
+using SmallNetCore.Extensions.ServiceExtensions;
+using SmallNetCore.Models.Base.Helper;
 
 var builder = WebApplication.CreateBuilder(args);
 
-#region Ìí¼Ó·şÎñ
+#region æ·»åŠ æœåŠ¡
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(o =>
+{
+    // å…¨å±€å¼‚å¸¸è¿‡æ»¤
+    o.Filters.Add(typeof(GlobalExceptionsFilter));
 
-//swaggerÎÄµµ
+    // æ–¹æ³•æ‰§è¡Œå‰å
+    o.Filters.Add(typeof(MyActionFilterAttribute));
+});
+
+//swaggeræ–‡æ¡£
 if (EnvironmentExt.IsTestEnv())
 {
-    builder.Services.AddSwaggerGen(c =>
-    {
-        c.SwaggerDoc("v1", new OpenApiInfo
-        {
-            Title = "ÕâÊÇÎÄµµ±êÌâ",
-            Version = "ÎÄµµ°æ±¾±àºÅ",
-            Description = "ÎÄµµÃèÊö"
-        });
-
-        var strPath = Directory.GetCurrentDirectory();
-        var file = Path.Combine(AppContext.BaseDirectory, "SmallNetCore.UI.xml");  // xmlÎÄµµ¾ø¶ÔÂ·¾¶
-        var file2 = Path.Combine(AppContext.BaseDirectory, "SmallNetCore.Models.xml");  // xmlÎÄµµ¾ø¶ÔÂ·¾¶
-        c.IncludeXmlComments(file, true); // true : ÏÔÊ¾¿ØÖÆÆ÷²ã×¢ÊÍ
-        c.IncludeXmlComments(file2);
-    });
+    builder.Services.AddSwaggerSetup();
 }
+
+//è¯»å–é…ç½®æ–‡ä»¶
+builder.Services.AddSingleton(new AppsettingHelper(builder.Configuration));
+
+//åŠ å…¥AutoMapper
+builder.Services.AddAutoMapperSetup();
+
+builder.Services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+
+//æ³¨å†ŒæœåŠ¡
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(item =>
+{
+    item.RegisterModule(new AutofacModuleRegister());//æ‰¹é‡æ³¨å†ŒæœåŠ¡
+});
+
+//åŠ å…¥JWTæƒé™éªŒè¯
+builder.Services.AddAuthentication_JWTSetup();
+
+//æ³¨å…¥Log4Net
+builder.Services.AddLogging(cfg =>
+{
+    cfg.AddLog4Net();//å¯ä»¥é€šè¿‡log4net.config é…ç½®å†™å…¥æ•°æ®åº“/Mogodb/ESç­‰
+});
 
 var app = builder.Build();
 #endregion
 
-#region ÆôÓÃÖĞ¼ä¼şÏà¹Ø
+#region å¯ç”¨ä¸­é—´ä»¶ç›¸å…³
 
-//swaggerÎÄµµ
+//swaggeræ–‡æ¡£
 if (EnvironmentExt.IsTestEnv())
 {
     app.UseSwagger();
@@ -43,7 +65,17 @@ if (EnvironmentExt.IsTestEnv())
     });
 }
 
+// å¯ç”¨è·¯ç”±
+app.UseRouting();
+
+//é‰´æƒæˆæƒ
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
+
 app.Run();
 #endregion
-
-

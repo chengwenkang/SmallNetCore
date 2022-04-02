@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +17,35 @@ namespace SmallNetCore.Common.Serialize
         /// <returns></returns>
         public static string ToJson<T>(T obj)
         {
-            return JsonConvert.SerializeObject(obj);
+            try
+            {
+                if (obj != null)
+                {
+                    return JsonConvert.SerializeObject(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return string.Empty;
         }
 
+        public static string ToJson(string obj)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(obj) && obj != "null")
+                {
+                    return JsonConvert.DeserializeObject<string>(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return string.Empty;
+        }
         /// <summary>
         /// JsonConvert.DeserializeObject
         /// </summary>

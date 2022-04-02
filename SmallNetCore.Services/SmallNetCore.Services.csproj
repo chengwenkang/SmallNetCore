@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmallNetCore.Common\SmallNetCore.Common.csproj" />
+    <ProjectReference Include="..\SmallNetCore.IServices\SmallNetCore.IServices.csproj" />
+    <ProjectReference Include="..\SmallNetCore.Repository\SmallNetCore.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

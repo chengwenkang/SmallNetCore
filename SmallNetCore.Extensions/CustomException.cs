@@ -1,4 +1,4 @@
-﻿using SmallNetCore.Common.Utils;
+using SmallNetCore.Common.Utils;
 using SmallNetCore.Models.Enums;
 using System.Runtime.Serialization;
 

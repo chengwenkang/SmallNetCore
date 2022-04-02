@@ -1,4 +1,4 @@
-﻿namespace SmallNetCore.Extensions
+namespace SmallNetCore.Extensions
 {
     /// <summary>
     /// 环境扩展
