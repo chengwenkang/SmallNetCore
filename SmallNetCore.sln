@@ -7,17 +7,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmallNetCore.UI", "SmallNet
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmallNetCore.Models", "SmallNetCore.Models\SmallNetCore.Models.csproj", "{38535FAE-934E-455F-ABE0-F94FC8A6F3BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallNetCore.Services", "SmallNetCore.Services\SmallNetCore.Services.csproj", "{5A7FF2D5-D057-4A3E-92BA-EC64DC62A978}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmallNetCore.Services", "SmallNetCore.Services\SmallNetCore.Services.csproj", "{5A7FF2D5-D057-4A3E-92BA-EC64DC62A978}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallNetCore.IServices", "SmallNetCore.IServices\SmallNetCore.IServices.csproj", "{D9BEACDF-6106-4EDF-8FDC-C0EB417FE324}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmallNetCore.IServices", "SmallNetCore.IServices\SmallNetCore.IServices.csproj", "{D9BEACDF-6106-4EDF-8FDC-C0EB417FE324}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallNetCore.Repository", "SmallNetCore.Repository\SmallNetCore.Repository.csproj", "{4185989C-25DF-48E0-8450-B741F9A90BE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmallNetCore.Repository", "SmallNetCore.Repository\SmallNetCore.Repository.csproj", "{4185989C-25DF-48E0-8450-B741F9A90BE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallNetCore.Common", "SmallNetCore.Common\SmallNetCore.Common.csproj", "{038C95B5-D405-49FA-9DEA-E0C7689CFA4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmallNetCore.Common", "SmallNetCore.Common\SmallNetCore.Common.csproj", "{038C95B5-D405-49FA-9DEA-E0C7689CFA4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallNetCore.Remotes", "SmallNetCore.Remotes\SmallNetCore.Remotes.csproj", "{67B72EE6-1035-4D09-9255-7324A482AE5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmallNetCore.Remotes", "SmallNetCore.Remotes\SmallNetCore.Remotes.csproj", "{67B72EE6-1035-4D09-9255-7324A482AE5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallNetCore.Extensions", "SmallNetCore.Extensions\SmallNetCore.Extensions.csproj", "{A422DDEC-C3B7-4EBF-A881-CF0860E2F023}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmallNetCore.Extensions", "SmallNetCore.Extensions\SmallNetCore.Extensions.csproj", "{A422DDEC-C3B7-4EBF-A881-CF0860E2F023}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D014CED2-6018-4CF4-9957-93A3F9014364}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{30C428F1-84F8-49A5-8A3C-38887160807C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallNetCore.IRepository", "SmallNetCore.IRepository\SmallNetCore.IRepository.csproj", "{49D8B017-EBB2-47C1-9027-0AA0E016EC43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,9 +63,19 @@ Global
 		{A422DDEC-C3B7-4EBF-A881-CF0860E2F023}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A422DDEC-C3B7-4EBF-A881-CF0860E2F023}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A422DDEC-C3B7-4EBF-A881-CF0860E2F023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D8B017-EBB2-47C1-9027-0AA0E016EC43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D8B017-EBB2-47C1-9027-0AA0E016EC43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D8B017-EBB2-47C1-9027-0AA0E016EC43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D8B017-EBB2-47C1-9027-0AA0E016EC43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A7FF2D5-D057-4A3E-92BA-EC64DC62A978} = {D014CED2-6018-4CF4-9957-93A3F9014364}
+		{D9BEACDF-6106-4EDF-8FDC-C0EB417FE324} = {D014CED2-6018-4CF4-9957-93A3F9014364}
+		{4185989C-25DF-48E0-8450-B741F9A90BE7} = {30C428F1-84F8-49A5-8A3C-38887160807C}
+		{49D8B017-EBB2-47C1-9027-0AA0E016EC43} = {30C428F1-84F8-49A5-8A3C-38887160807C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9EC590C-C973-4BFC-BA56-217A3BE7D64E}

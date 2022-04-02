@@ -1,4 +1,4 @@
-﻿namespace SmallNetCore.IServices
+﻿namespace SmallNetCore.IRepository
 {
     public class Class1
     {

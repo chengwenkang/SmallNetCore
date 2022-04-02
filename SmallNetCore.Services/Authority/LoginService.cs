@@ -2,7 +2,6 @@ using SmallNetCore.Extensions;
 using SmallNetCore.IServices.Authority;
 using SmallNetCore.IServices.Base;
 using SmallNetCore.Models.Base;
-using SmallNetCore.Models.Configs;
 using SmallNetCore.Models.ViewModels.Base;
 using SmallNetCore.Models.ViewModels.Request.Authority;
 using SmallNetCore.Models.ViewModels.Response.Authority;

@@ -19,11 +19,6 @@
     <ProjectReference Include="..\SmallNetCore.Models\SmallNetCore.Models.csproj" />
     <ProjectReference Include="..\SmallNetCore.Services\SmallNetCore.Services.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Logs\" />
-  </ItemGroup>
-
   <ItemGroup>
     <Content Update="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
