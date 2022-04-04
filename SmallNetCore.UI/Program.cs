@@ -1,6 +1,5 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authorization;
 using SmallNetCore.Extensions;
 using SmallNetCore.Extensions.Filter;
 using SmallNetCore.Extensions.ServiceExtensions;
@@ -39,6 +38,9 @@ builder.Host.ConfigureContainer<ContainerBuilder>(item =>
 {
     item.RegisterModule(new AutofacModuleRegister());//批量注册服务
 });
+
+//加入SqlSugar
+builder.Services.AddSqlSugarSetup();
 
 //加入JWT权限验证
 builder.Services.AddAuthentication_JWTSetup();

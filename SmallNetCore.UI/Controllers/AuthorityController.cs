@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SmallNetCore.Common.Utils;
 using SmallNetCore.IServices.Authority;
 using SmallNetCore.Models.Base;
-using SmallNetCore.Models.DBModels;
+using SmallNetCore.Models.DBModels.FirstTestDb;
 using SmallNetCore.Models.ViewModels.Base;
 using SmallNetCore.Models.ViewModels.Request.Authority;
 using SmallNetCore.Models.ViewModels.Response.Authority;
@@ -19,10 +19,12 @@ namespace SmallNetCore.UI.Controllers
     public class AuthorityController : ControllerBase
     {
         ILoginService loginService;
+        IRoleService roleService;
         IMapper mapper;
-        public AuthorityController(ILoginService _loginService, IMapper _mapper)
+        public AuthorityController(ILoginService _loginService, IRoleService _roleService, IMapper _mapper)
         {
             this.loginService = _loginService;
+            this.roleService = _roleService;
             this.mapper = _mapper;
         }
 
@@ -38,23 +40,23 @@ namespace SmallNetCore.UI.Controllers
         }
 
         /// <summary>
-        /// 登录
+        /// 验证AutoMapper
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
-        public BaseResponse<ArticleViewModel> CheckAutoMapper(LoginRequest request)
+        public BaseResponse<UserViewModel> CheckAutoMapper(LoginRequest request)
         {
-            var model = new Article
+            var model = new User
             {
-                CreateTime = DateTime.Now,
                 Id = 1,
-                Remark = "ccesefe"
+                UserName = "ccesefe",
+                Sex = 0
             };
 
-            var viewModel = mapper.Map<ArticleViewModel>(model);
+            var viewModel = mapper.Map<UserViewModel>(model);
 
-            return new BaseResponse<ArticleViewModel>
+            return new BaseResponse<UserViewModel>
             {
                 Result = viewModel
             };
@@ -89,20 +91,51 @@ namespace SmallNetCore.UI.Controllers
         /// <param name="i"></param>
         /// <returns></returns>
         [HttpPost]
-        public Article TestCache(int i)
+        public User TestCache(int i)
         {
-            var model = new Article
+            var model = new User
             {
-                CreateTime = DateTime.Now,
                 Id = 1,
-                Remark = "ccesefe"
+                UserName = "ccesefe",
+                Sex = 0
             };
 
             CacheHelper.SetCache("sds", model, 3);
 
             var re = CacheHelper.GetCache("sds");
 
-            return (Article)re;
+            return (User)re;
+        }
+
+        /// <summary>
+        /// AddRole
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public bool AddRole(Role role)
+        {
+            return roleService.Add(role);
+        }
+
+        /// <summary>
+        /// GetRoleList
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public List<Role> GetRoleList()
+        {
+            return roleService.Query();
+        }
+
+        /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public BaseResponse<bool> AddUser()
+        {
+            return loginService.AddUser();
         }
     }
 }

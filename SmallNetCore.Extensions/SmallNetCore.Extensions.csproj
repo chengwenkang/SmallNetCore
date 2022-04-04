@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SmallNetCore.Common\SmallNetCore.Common.csproj" />
     <ProjectReference Include="..\SmallNetCore.Models\SmallNetCore.Models.csproj" />
+    <ProjectReference Include="..\SmallNetCore.Repository\SmallNetCore.Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SmallNetCore.Models.ViewModels.Base
 {
+    /// <summary>
+    /// 基础返回类
+    /// </summary>
     public class BaseResponse
     {
         /// <summary>
@@ -21,6 +24,9 @@ namespace SmallNetCore.Models.ViewModels.Base
 
     }
 
+    /// <summary>
+    /// 带结果的基础返回类
+    /// </summary>
     public class BaseResponse<T> : BaseResponse
     {
         /// <summary>
@@ -29,6 +35,10 @@ namespace SmallNetCore.Models.ViewModels.Base
         public T Result { get; set; }
     }
 
+    /// <summary>
+    /// 分页的基础返回类
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class BasePageResponse<T>
     {
         /// <summary>
@@ -52,6 +62,9 @@ namespace SmallNetCore.Models.ViewModels.Base
         public List<T> Records { get; set; } = new List<T>();
     }
 
+    /// <summary>
+    /// 返回的格式封装
+    /// </summary>
     public class CommonResponse
     {
         /// <summary>

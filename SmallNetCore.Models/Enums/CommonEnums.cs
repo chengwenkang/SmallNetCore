@@ -19,4 +19,13 @@ namespace SmallNetCore.Models.Enums
         Warn = 1,
         Error = 2,
     }
+
+    /// <summary>
+    /// Êý¾Ý¿âÁ´½Ó
+    /// </summary>
+    public enum MySqlConnEnum
+    {
+        FisrtTestDb,
+        SecondTestDb,
+    }
 }

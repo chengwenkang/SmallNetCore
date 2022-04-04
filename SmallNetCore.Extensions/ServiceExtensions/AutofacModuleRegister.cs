@@ -1,5 +1,6 @@
 using Autofac;
 using log4net;
+using SmallNetCore.Repository.Base;
 using System.Reflection;
 
 namespace SmallNetCore.Extensions.ServiceExtensions
@@ -31,13 +32,14 @@ namespace SmallNetCore.Extensions.ServiceExtensions
                       .InstancePerDependency()
                       .PropertiesAutowired();
 
-            // 获取 Repository.dll 程序集服务，并注册
-            var assemblysRepository = Assembly.LoadFrom(repositoryDllFile);
-            builder.RegisterAssemblyTypes(assemblysRepository)
-                   .AsImplementedInterfaces()
-                   .PropertiesAutowired()
-                   .InstancePerDependency();
+            //// 获取 Repository.dll 程序集服务，并注册
+            //var assemblysRepository = Assembly.LoadFrom(repositoryDllFile);
+            //builder.RegisterAssemblyTypes(assemblysRepository)
+            //       .AsImplementedInterfaces()
+            //       .PropertiesAutowired()
+            //       .InstancePerDependency();
 
+            //builder.RegisterGeneric(typeof(BaseRepository<>)).As(typeof(BaseRepository<>)).ExternallyOwned();//注册仓储泛型
             #endregion
         }
     }

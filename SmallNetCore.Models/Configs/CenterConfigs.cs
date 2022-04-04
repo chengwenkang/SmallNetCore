@@ -19,6 +19,16 @@ namespace SmallNetCore.Models.Configs
         public static string SecretKey = AppsettingHelper.App(new string[] { "JwtSetting", "SecretKey" });
         public static string JWTExpireSeconds = AppsettingHelper.App(new string[] { "JwtSetting", "ExpireSeconds" });
 
+        /// <summary>
+        /// FirstDB数据库链接
+        /// </summary>
+        public static string FirstDB = AppsettingHelper.App(new string[] { "MYSQL", "ConnectionString" });
+
+        /// <summary>
+        /// SecondDB数据库链接
+        /// </summary>
+        public static string SecondDB = AppsettingHelper.App(new string[] { "MYSQL2", "ConnectionString" });
+      
         #endregion
     }
 }

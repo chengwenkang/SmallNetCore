@@ -1,11 +1,6 @@
 using AutoMapper;
-using SmallNetCore.Models.DBModels;
+using SmallNetCore.Models.DBModels.FirstTestDb;
 using SmallNetCore.Models.ViewModels.Response.Authority;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmallNetCore.Extensions.AutoMapper
 {
@@ -16,7 +11,7 @@ namespace SmallNetCore.Extensions.AutoMapper
         /// </summary>
         public CustomProfile()
         {
-            CreateMap<Article, ArticleViewModel>();
+            CreateMap<Role, RoleViewModel>();
             CreateMap<User, UserViewModel>();
         }
     }
