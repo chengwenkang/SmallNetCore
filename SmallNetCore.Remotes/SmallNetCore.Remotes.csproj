@@ -11,4 +11,9 @@
     <Folder Include="TencentServices\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SmallNetCore.Common\SmallNetCore.Common.csproj" />
+    <ProjectReference Include="..\SmallNetCore.Models\SmallNetCore.Models.csproj" />
+  </ItemGroup>
+
 </Project>

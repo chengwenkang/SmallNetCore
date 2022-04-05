@@ -17,6 +17,7 @@
     <ProjectReference Include="..\SmallNetCore.Extensions\SmallNetCore.Extensions.csproj" />
     <ProjectReference Include="..\SmallNetCore.IServices\SmallNetCore.IServices.csproj" />
     <ProjectReference Include="..\SmallNetCore.Models\SmallNetCore.Models.csproj" />
+    <ProjectReference Include="..\SmallNetCore.Remotes\SmallNetCore.Remotes.csproj" />
     <ProjectReference Include="..\SmallNetCore.Services\SmallNetCore.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
