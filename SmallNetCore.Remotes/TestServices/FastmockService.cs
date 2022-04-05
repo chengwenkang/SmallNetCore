@@ -1,12 +1,9 @@
 ﻿using SmallNetCore.Common.ApIInfo;
 using SmallNetCore.Common.Serialize;
+using SmallNetCore.Models.Configs;
 using SmallNetCore.Models.ViewModels.Base.Remotes;
+using SmallNetCore.Models.ViewModels.Request.Remotes;
 using SmallNetCore.Models.ViewModels.Response.Remotes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmallNetCore.Remotes.TestServices
 {
@@ -18,9 +15,20 @@ namespace SmallNetCore.Remotes.TestServices
         /// <returns></returns>
         public static FastmockBase<PlayResponse> GetPlays()
         {
-            var result = HttpHelper.GetAsync("https://www.fastmock.site/mock/37e23916a9f1690d9acec5d71ba1f3cb/Test/GetPlayers");
+            var result = HttpHelper.GetAsync(Consts.GetPlayersUrl);
 
             return JsonHelper.ToObject<FastmockBase<PlayResponse>>(result.Result);
+        }
+
+        /// <summary>
+        /// 用于测试
+        /// </summary>
+        /// <returns></returns>
+        public static FastmockBase<bool> CheckPlay(CheckPlayRequest request)
+        {
+            var result = HttpHelper.PostAsync(Consts.CheckPlay, JsonHelper.ToJson(request));
+
+            return JsonHelper.ToObject<FastmockBase<bool>>(result.Result);
         }
     }
 }

@@ -1,4 +1,5 @@
 using SmallNetCore.Models.Base.Helper;
+using SmallNetCore.Models.Entitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,15 +21,10 @@ namespace SmallNetCore.Models.Configs
         public static string JWTExpireSeconds = AppsettingHelper.App(new string[] { "JwtSetting", "ExpireSeconds" });
 
         /// <summary>
-        /// FirstDB数据库链接
+        /// 数据库链接
         /// </summary>
-        public static string FirstDB = AppsettingHelper.App(new string[] { "MYSQL", "ConnectionString" });
-
-        /// <summary>
-        /// SecondDB数据库链接
-        /// </summary>
-        public static string SecondDB = AppsettingHelper.App(new string[] { "MYSQL2", "ConnectionString" });
-      
+        public static List<DBConnConfigEntity> DBConfigs = AppsettingHelper.App<DBConnConfigEntity>(new string[] { "MYSQL" });
+       
         #endregion
     }
 }

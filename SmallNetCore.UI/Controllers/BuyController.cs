@@ -3,6 +3,7 @@ using SmallNetCore.IServices.BuyServices;
 using SmallNetCore.Models.ViewModels.Base;
 using SmallNetCore.Models.ViewModels.Base.Remotes;
 using SmallNetCore.Models.ViewModels.Request.BuyServices;
+using SmallNetCore.Models.ViewModels.Request.Remotes;
 using SmallNetCore.Models.ViewModels.Response.Remotes;
 using SmallNetCore.Remotes.TestServices;
 
@@ -37,6 +38,17 @@ namespace SmallNetCore.UI.Controllers
         public  FastmockBase<PlayResponse> GetPlays()
         {
             return FastmockService.GetPlays();
+        }
+
+        /// <summary>
+        /// 用于测试
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public  FastmockBase<bool> CheckPlay(CheckPlayRequest request)
+        {
+            return FastmockService.CheckPlay(request);
         }
     }
 }
