@@ -1,7 +1,10 @@
 # SmallNetCore
 
 #### 介绍
-{SmallNetCore是采用NET6搭建的一套轻量级后端开发项目,对于中小型企业或者个人项目可以直接使用，项目主要使用的技术栈包括：NetCore、Autofac、Sqlsugar、AutoMapper、Log4、JWT、Swagger等，基础框架功能都已经封装好，对相关技术稍加了解就能开箱即用，项目基本没有冗余代码。项目请看 [https://gitee.com/chengwenkang123/small-net-core](https://gitee.com/chengwenkang123/small-net-core)}
+SmallNetCore是采用NET6搭建的一套轻量级后端开发项目,对于中小型企业或者个人项目可以直接使用，项目主要使用的技术栈包括：NetCore、Autofac、Sqlsugar、AutoMapper、Log4、JWT、Swagger等，基础框架功能都已经封装好，对相关技术稍加了解就能开箱即用，项目基本没有冗余代码。
+
++ [gitee地址](https://gitee.com/chengwenkang123/small-net-core)
++ [github地址](https://github.com/chengwenkang/SmallNetCore)
 
 #### 软件架构
 以MVC三层架构为基础的架构体系，整体的架构是每张表对应一个实体类、一个数据访问层的类。业务逻辑层则按照具体的业务进行组装，摒弃了一张表一个业务类的设计。例如下单业务，就会涉及到订单表、用户表、支付表进行组合。
@@ -79,4 +82,6 @@
 
 +  项目Gitee请看 [https://gitee.com/chengwenkang123/small-net-core](https://gitee.com/chengwenkang123/small-net-core)
 
-+   有问题可以加QQ:445056007
++  项目GitHub请看 [https://github.com/chengwenkang/SmallNetCore](https://github.com/chengwenkang/SmallNetCore)
+
++   有问题可以加QQ：445056007
