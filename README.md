@@ -61,8 +61,7 @@
     ```
 2.  数据库创建完成之后，进行更换项目的数据库链接，位置：SmallNetCore.UI -> appsettings.json -> MYSQL节点
 3.  当前数据库完全只是测试数据库，并非必要数据库，正式项目可以替换自己的数据库，甚至更换Mysql,使用其他类型的数据库
-4.  实体生成，可以使用[sqlsugar官方推荐的链接](https://gitee.com/chengwenkang123/small-net-core)，生成的实体需要包含Tenant特性，如下图，主要是解决当前项目存在多个数据库问题，如果单库可以通过设置默认链接不用设置Tenant特性
-5.  后期针对数据访问层也会集成到代码生成器里面，这个后期进行完善....
+4.  实体生成，可以使用[sqlsugar官方推荐的链接](https://www.donet5.com/Home/Doc?typeId=1207)，生成的实体需要包含Tenant特性，如下图，主要是解决当前项目存在多个数据库问题，如果单库可以通过设置默认链接不用设置Tenant特性
 
     ```
     [Tenant(MySqlConnEnum.FisrtTestDb)]
@@ -74,7 +73,7 @@
         [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
         public int RoleId { get; set; }
     ```
-
+5.  后期针对数据访问层也会集成到代码生成器里面，这个后期进行完善....
 
 #### 其他
 
