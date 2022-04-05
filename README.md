@@ -77,6 +77,6 @@
 
 #### 其他
 
-1.  项目Gitee请看 [https://gitee.com/chengwenkang123/small-net-core](https://gitee.com/chengwenkang123/small-net-core)
-2.  项目Github请看 [https://github.com/chengwenkang/SmallNetCore](https://github.com/chengwenkang/SmallNetCore)
-3.  有问题可以加QQ:445056007
++  项目Gitee请看 [https://gitee.com/chengwenkang123/small-net-core](https://gitee.com/chengwenkang123/small-net-core)
+
++   有问题可以加QQ:445056007
