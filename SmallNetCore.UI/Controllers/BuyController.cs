@@ -1,16 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmallNetCore.IServices.BuyServices;
 using SmallNetCore.Models.ViewModels.Base;
-using SmallNetCore.Models.ViewModels.Base.Remotes;
 using SmallNetCore.Models.ViewModels.Request.BuyServices;
-using SmallNetCore.Models.ViewModels.Request.Remotes;
-using SmallNetCore.Models.ViewModels.Response.Remotes;
-using SmallNetCore.Remotes.TestServices;
 
 namespace SmallNetCore.UI.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class BuyController : ControllerBase
     {
         IOrderService orderService;
@@ -20,7 +18,7 @@ namespace SmallNetCore.UI.Controllers
         }
 
         /// <summary>
-        /// 购买
+        /// 下单，完全是为了测试跨库事务，逻辑忽略
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -28,27 +26,6 @@ namespace SmallNetCore.UI.Controllers
         public BaseResponse<int> BuyProduct(BuyProductRequest request)
         {
             return orderService.BuyProduct(request);
-        }
-
-        /// <summary>
-        /// 用于测试
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost]
-        public  FastmockBase<PlayResponse> GetPlays()
-        {
-            return FastmockService.GetPlays();
-        }
-
-        /// <summary>
-        /// 用于测试
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public  FastmockBase<bool> CheckPlay(CheckPlayRequest request)
-        {
-            return FastmockService.CheckPlay(request);
         }
     }
 }

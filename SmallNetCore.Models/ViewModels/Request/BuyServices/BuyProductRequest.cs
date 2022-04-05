@@ -14,11 +14,6 @@ namespace SmallNetCore.Models.ViewModels.Request.BuyServices
         public int ProductId { get; set; }
 
         /// <summary>
-        /// 用户ID
-        /// </summary>
-        public int UserId { get; set; }
-
-        /// <summary>
         /// 用户姓名
         /// </summary>
         public string UserName { get; set; }

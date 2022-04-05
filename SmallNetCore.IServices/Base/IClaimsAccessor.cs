@@ -9,6 +9,8 @@ namespace SmallNetCore.IServices.Base
 {
     public interface IClaimsAccessor
     {
-        ClaimsPrincipal UserPrincipal { get; }
+        //ClaimsPrincipal UserPrincipal { get; }
+
+        int CurrentUserId { get; }
     }
 }

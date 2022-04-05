@@ -1,7 +1,6 @@
 ﻿using SmallNetCore.IRepository.Base;
 using SqlSugar;
 using SqlSugar.IOC;
-using System.Linq.Expressions;
 using System.Reflection;
 
 namespace SmallNetCore.Repository.Base

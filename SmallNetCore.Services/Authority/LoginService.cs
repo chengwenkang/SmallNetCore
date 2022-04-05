@@ -1,3 +1,4 @@
+using SmallNetCore.Common.Convets;
 using SmallNetCore.Extensions;
 using SmallNetCore.IRepository.FirstTestDb;
 using SmallNetCore.IRepository.SecondTestDb;
@@ -5,6 +6,7 @@ using SmallNetCore.IServices.Authority;
 using SmallNetCore.IServices.Base;
 using SmallNetCore.Models.Base;
 using SmallNetCore.Models.DBModels.FirstTestDb;
+using SmallNetCore.Models.Entitys;
 using SmallNetCore.Models.ViewModels.Base;
 using SmallNetCore.Models.ViewModels.Request.Authority;
 using SmallNetCore.Models.ViewModels.Response.Authority;
@@ -15,23 +17,19 @@ namespace SmallNetCore.Services.Authority
     public class LoginService : ILoginService
     {
         IClaimsAccessor claimsAccessor;
-        IUserRepository userRepository;
         IRoleRepository roleRepository;
-        IOrderRepository orderRepository;
 
-        public LoginService(IClaimsAccessor _claimsAccessor, IUserRepository _userRepository, IRoleRepository _roleRepository, IOrderRepository _orderRepository)
+        public LoginService(IClaimsAccessor _claimsAccessor, IRoleRepository _roleRepository)
         {
             this.claimsAccessor = _claimsAccessor;
-            this.userRepository = _userRepository;
             this.roleRepository = _roleRepository;
-            this.orderRepository = _orderRepository;
         }
 
         public BaseResponse<TokenModel> GetUserInfo(int i)
         {
             return GetOK(new TokenModel
             {
-                Name = claimsAccessor.UserPrincipal.Identity.Name
+                UId = claimsAccessor.CurrentUserId
             });
         }
 
@@ -39,7 +37,6 @@ namespace SmallNetCore.Services.Authority
         {
             var token = JwtHelper.GetToken(new TokenModel
             {
-                Name = "test",
                 UId = 123
             });
 

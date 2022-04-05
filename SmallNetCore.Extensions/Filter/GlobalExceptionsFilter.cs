@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using SmallNetCore.Common.Serialize;
 using SmallNetCore.Models.Enums;
 using SmallNetCore.Models.ViewModels.Base;
+using System.Net;
 using System.Web.Http;
 
 namespace SmallNetCore.Extensions.Filter
@@ -22,7 +23,7 @@ namespace SmallNetCore.Extensions.Filter
                     StatusCode = context.Exception is CustomException ? StatusCodeEnum.Fail : StatusCodeEnum.Exception  //如果是自定义的异常，则返回正常错误，否则按系统异常处理
                 };
 
-                if (context.Exception is HttpResponseException)
+                if (context.Exception is HttpResponseException && ((HttpResponseException)context.Exception).Response.StatusCode == HttpStatusCode.Unauthorized)
                 {
                     context.Result = new UnauthorizedResult();
                 }
@@ -34,7 +35,7 @@ namespace SmallNetCore.Extensions.Filter
                     };
                 }
 
-                //采用log4net 进行错误日志记录
+                //TODO 根据自己的需要做日志记录
                 log.Error(json.ErrorMsg, context.Exception);
             }
             context.ExceptionHandled = true;

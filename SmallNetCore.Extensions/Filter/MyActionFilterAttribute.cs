@@ -24,7 +24,8 @@ namespace SmallNetCore.Extensions.Filter
             {
                 request = JsonHelper.ToJson(filterContext.ActionArguments);
             }
-        
+
+            //TODO 根据自己的需要做日志记录
             var logStr = $"请求参数：{request},TraceId:{Thread.GetCurrentProcessorId()}"; // 记录请求日志
             log.Info(logStr);
         }
@@ -38,7 +39,8 @@ namespace SmallNetCore.Extensions.Filter
             base.OnActionExecuted(filterContext);
 
             var response = JsonHelper.ToJson(filterContext.Result);
-
+           
+            //TODO 根据自己的需要做日志记录
             var logStr = $"返回参数：{response},TraceId:{Thread.GetCurrentProcessorId()}"; // 记录请求日志
             log.Info(logStr);
         }
@@ -68,7 +70,7 @@ namespace SmallNetCore.Extensions.Filter
                 return;
             }
          
-            //TODO 自己的事
+            //TODO 根据自己的需要做日志记录
             var logStr = $"OnResultExecuting,TraceId:{Thread.GetCurrentProcessorId()}"; // 记录请求日志
             log.Info(logStr);
         }
@@ -81,7 +83,7 @@ namespace SmallNetCore.Extensions.Filter
         {
             base.OnResultExecuted(filterContext);
 
-            //TODO 自己的事
+            //TODO 根据自己的需要做日志记录
             var logStr = $"OnResultExecuted,TraceId:{Thread.GetCurrentProcessorId()}"; // 记录请求日志
             log.Info(logStr);
         }

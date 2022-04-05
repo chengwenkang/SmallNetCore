@@ -1,5 +1,7 @@
-﻿using SmallNetCore.IRepository.FirstTestDb;
+﻿using SmallNetCore.Common.Convets;
+using SmallNetCore.IRepository.FirstTestDb;
 using SmallNetCore.IRepository.SecondTestDb;
+using SmallNetCore.IServices.Base;
 using SmallNetCore.IServices.BuyServices;
 using SmallNetCore.Models.DBModels.FirstTestDb;
 using SmallNetCore.Models.DBModels.SecondTestDb;
@@ -13,25 +15,32 @@ namespace SmallNetCore.Services.BuyServices
     {
         IOrderRepository orderRepository;
         IUserRepository userRepository;
+        IClaimsAccessor claimsAccessor;
 
-        public OrderServicel(IOrderRepository _orderRepository, IUserRepository _userRepository)
+        public OrderServicel(IClaimsAccessor _claimsAccessor, IOrderRepository _orderRepository, IUserRepository _userRepository)
         {
+            this.claimsAccessor = _claimsAccessor;
             this.orderRepository = _orderRepository;
-            this.userRepository= _userRepository;
+            this.userRepository = _userRepository;
         }
 
+        /// <summary>
+        /// 完全是为了测试事务，逻辑忽略
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public BaseResponse<int> BuyProduct(BuyProductRequest request)
         {
             var order = new Order
             {
                 ProductId = request.ProductId,
-                UserId = request.UserId
+                UserId = claimsAccessor.CurrentUserId
             };
 
             var user = new User
             {
-                Id = 13,
-                UserName = request.UserName
+                UserName = request.UserName,
+                Sex = 1
             };
 
             var resultTran = orderRepository.UseMutliTran(() =>

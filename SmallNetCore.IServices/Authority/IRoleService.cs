@@ -4,7 +4,7 @@ namespace SmallNetCore.IServices.Authority
 {
     public interface IRoleService
     {
-        public bool Add(Role model);
+        public bool Add(string roleName);
 
         public List<Role> Query();
     }
