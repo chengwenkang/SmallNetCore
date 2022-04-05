@@ -16,6 +16,6 @@ namespace SmallNetCore.IServices.Authority
 
         public BaseResponse<TokenModel> GetUserInfo(int i);
 
-        public BaseResponse<bool> AddUser();
+        public BaseResponse<bool> AddUser(string name);
     }
 }

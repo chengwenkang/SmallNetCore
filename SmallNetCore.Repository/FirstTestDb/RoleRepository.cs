@@ -4,7 +4,7 @@ using SmallNetCore.Repository.Base;
 
 namespace SmallNetCore.Repository.FirstTestDb
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class RoleRepository : BaseRepository<Role>, IRoleRepository
     {
 
     }

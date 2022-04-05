@@ -1,4 +1,5 @@
-﻿using SqlSugar;
+﻿using SmallNetCore.IRepository.Base;
+using SqlSugar;
 using SqlSugar.IOC;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -25,122 +26,38 @@ namespace SmallNetCore.Repository.Base
             itenant = DbScoped.SugarScope;//设置租户接口
         }
 
-        #region 查询实体,select()用法
-        public async Task<TResult> GeT<TResult>(Expression<Func<T, bool>> predicate)
-        {
-            return await Context.Queryable<T>().Where(predicate).Select<TResult>().FirstAsync();
-        }
-        public async Task<TResult> GeT<TResult>(Expression<Func<T, TResult>> expression, Expression<Func<T, bool>> predicate)
-        {
-            return await Context.Queryable<T>().Where(predicate).Select(expression).FirstAsync();
-        }
-        #endregion
+        #region 扩展方法
 
-        #region 查询列表，T查询扩展
-        public async Task<List<T>> QueryList(string strOrderByFileds)
-        {
-            return await Context.Queryable<T>().OrderBy(strOrderByFileds).ToListAsync();
-        }
-        public async Task<List<T>> QueryList(Expression<Func<T, bool>> predicate, string strOrderByFileds)
-        {
-            return await Context.Queryable<T>().WhereIF(predicate != null, predicate).OrderByIF(strOrderByFileds != null, strOrderByFileds).ToListAsync();
-        }
-        public async Task<List<T>> QueryList(Expression<Func<T, bool>> predicate, Expression<Func<T, object>> orderByExpression, bool isAsc = true)
-        {
-            return await Context.Queryable<T>().WhereIF(predicate != null, predicate).OrderByIF(orderByExpression != null, orderByExpression, isAsc ? OrderByType.Asc : OrderByType.Desc).ToListAsync();
-        }
-        #endregion
-
-        #region 查询列表,select<dto>()用法
         /// <summary>
-        /// 查询列表
-        /// select<dto>()用法
-        /// </summary>
-        /// <typeparam name="TResult"></typeparam>
-        /// <param name="predicate"></param>
-        /// <returns></returns>
-        public async Task<List<TResult>> QueryList<TResult>(Expression<Func<T, bool>> predicate = null)
-        {
-            return await Context.Queryable<T>().WhereIF(predicate != null, predicate).Select<TResult>().ToListAsync();
-        }
-        public async Task<List<TResult>> QueryList<TResult>(string strOrderByFileds)
-        {
-            return await Context.Queryable<T>().OrderBy(strOrderByFileds).Select<TResult>().ToListAsync();
-        }
-        public async Task<List<TResult>> QueryList<TResult>(Expression<Func<T, object>> orderByExpression, bool isAsc = true)
-        {
-            return await Context.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, isAsc ? OrderByType.Asc : OrderByType.Desc).Select<TResult>().ToListAsync();
-        }
-
-        public async Task<List<TResult>> QueryList<TResult>(Expression<Func<T, bool>> predicate, string strOrderByFileds)
-        {
-            return await Context.Queryable<T>().WhereIF(predicate != null, predicate).OrderByIF(strOrderByFileds != null, strOrderByFileds).Select<TResult>().ToListAsync();
-        }
-        public async Task<List<TResult>> QueryList<TResult>(Expression<Func<T, bool>> predicate, Expression<Func<T, object>> orderByExpression, bool isAsc = true)
-        {
-            return await Context.Queryable<T>().WhereIF(predicate != null, predicate).OrderByIF(orderByExpression != null, orderByExpression, isAsc ? OrderByType.Asc : OrderByType.Desc).Select<TResult>().ToListAsync();
-        }
-        #endregion
-
-        #region 查询列表,select(expression)表达式用法
-        /// <summary>
-        /// 查询列表
-        /// select(expression)表达式用法
-        /// </summary>
-        /// <typeparam name="TResult"></typeparam>
-        /// <param name="expression"></param>
-        /// <param name="predicate"></param>
-        /// <returns></returns>
-        public async Task<List<TResult>> QueryList<TResult>(Expression<Func<T, TResult>> expression, Expression<Func<T, bool>> predicate = null)
-        {
-            return await Context.Queryable<T>().WhereIF(predicate != null, predicate).Select(expression).ToListAsync();
-        }
-        public async Task<List<TResult>> QueryList<TResult>(Expression<Func<T, TResult>> expression, string strOrderByFileds)
-        {
-            return await Context.Queryable<T>().OrderBy(strOrderByFileds).Select(expression).ToListAsync();
-        }
-        public async Task<List<TResult>> QueryList<TResult>(Expression<Func<T, TResult>> expression, Expression<Func<T, object>> orderByExpression, bool isAsc = true)
-        {
-            return await Context.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, isAsc ? OrderByType.Asc : OrderByType.Desc).Select(expression).ToListAsync();
-        }
-        public async Task<List<TResult>> QueryList<TResult>(Expression<Func<T, TResult>> expression, Expression<Func<T, bool>> predicate, string strOrderByFileds)
-        {
-            return await Context.Queryable<T>().WhereIF(predicate != null, predicate).OrderByIF(strOrderByFileds != null, strOrderByFileds).Select(expression).ToListAsync();
-        }
-        public async Task<List<TResult>> QueryList<TResult>(Expression<Func<T, TResult>> expression, Expression<Func<T, bool>> predicate, Expression<Func<T, object>> orderByExpression, bool isAsc = true)
-        {
-            return await Context.Queryable<T>().WhereIF(predicate != null, predicate).OrderByIF(orderByExpression != null, orderByExpression, isAsc ? OrderByType.Asc : OrderByType.Desc).Select(expression).ToListAsync();
-        }
-        #endregion
-
-        #region 事务委托
-        /// <summary>
-        /// 多租户异常事务
+        /// 同库处理事务
         /// </summary>
         /// <param name="action"></param>
         /// <returns></returns>
-        public async Task<DbResult<bool>> UseITenantTran(Func<Task> action)
+        public DbResult<bool> UseTran(Action<ISqlSugarClient> action)
         {
-            var resultTran = await itenant.UseTranAsync(async () =>
-            {
-                await action();
-            });
+            var resultTran = base.Context.Ado.UseTran(() =>
+           {
+               action(base.Context);
+           });
 
             return resultTran;
         }
+
         /// <summary>
-        /// 同一对句事务处理
+        /// 多租户事务
         /// </summary>
         /// <param name="action"></param>
         /// <returns></returns>
-        public async Task<DbResult<bool>> UseTran(Func<Task> action)
+        public DbResult<bool> UseMutliTran(Action action)
         {
-            var resultTran = await Context.Ado.UseTranAsync(async () =>
-            {
-                await action();
-            });
-            return resultTran;
+            var resultTran = itenant.UseTran(() =>
+           {
+               action();
+           });
+
+           return resultTran;
         }
+
         #endregion
     }
 }

@@ -1,16 +1,25 @@
-﻿using SmallNetCore.IServices.BuyServices;
+﻿using SmallNetCore.IRepository.FirstTestDb;
+using SmallNetCore.IRepository.SecondTestDb;
+using SmallNetCore.IServices.BuyServices;
 using SmallNetCore.Models.DBModels.FirstTestDb;
 using SmallNetCore.Models.DBModels.SecondTestDb;
 using SmallNetCore.Models.ViewModels.Base;
 using SmallNetCore.Models.ViewModels.Request.BuyServices;
-using SmallNetCore.Repository.Base;
-using SmallNetCore.Services.Base;
 using static SmallNetCore.Models.ViewModels.Base.CommonResponse;
 
 namespace SmallNetCore.Services.BuyServices
 {
-    public class OrderServicel : BaseService<Order>, IOrderService
+    public class OrderServicel : IOrderService
     {
+        IOrderRepository orderRepository;
+        IUserRepository userRepository;
+
+        public OrderServicel(IOrderRepository _orderRepository, IUserRepository _userRepository)
+        {
+            this.orderRepository = _orderRepository;
+            this.userRepository= _userRepository;
+        }
+
         public BaseResponse<int> BuyProduct(BuyProductRequest request)
         {
             var order = new Order
@@ -22,15 +31,13 @@ namespace SmallNetCore.Services.BuyServices
             var user = new User
             {
                 Id = 13,
-                UserName = "skyskyskyskyskyskysky"
+                UserName = request.UserName
             };
 
-            var resultTran = itenant.UseTran(() =>
+            var resultTran = orderRepository.UseMutliTran(() =>
            {
-               var t1 = Context.Insertable(order).ExecuteCommand();
-
-               var orderDal = base.ChangeRepository<BaseRepository<User>>();//切换仓储
-               var t2 = orderDal.Context.Updateable(user).ExecuteCommand();
+               var t1 = orderRepository.Insert(order);
+               var t2 = userRepository.Insert(user);
            });
 
             return GetOK(order.OrderId);

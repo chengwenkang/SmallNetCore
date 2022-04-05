@@ -133,9 +133,9 @@ namespace SmallNetCore.UI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public BaseResponse<bool> AddUser()
+        public BaseResponse<bool> AddUser(string name)
         {
-            return loginService.AddUser();
+            return loginService.AddUser(name);
         }
     }
 }

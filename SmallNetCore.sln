@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{30C428F1-84F8-49A5-8A3C-38887160807C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallNetCore.IRepository", "SmallNetCore.IRepository\SmallNetCore.IRepository.csproj", "{869A6571-60C8-44E7-92C5-ECC09C9D5ED0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{A422DDEC-C3B7-4EBF-A881-CF0860E2F023}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A422DDEC-C3B7-4EBF-A881-CF0860E2F023}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A422DDEC-C3B7-4EBF-A881-CF0860E2F023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{869A6571-60C8-44E7-92C5-ECC09C9D5ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{869A6571-60C8-44E7-92C5-ECC09C9D5ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{869A6571-60C8-44E7-92C5-ECC09C9D5ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{869A6571-60C8-44E7-92C5-ECC09C9D5ED0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{5A7FF2D5-D057-4A3E-92BA-EC64DC62A978} = {D014CED2-6018-4CF4-9957-93A3F9014364}
 		{D9BEACDF-6106-4EDF-8FDC-C0EB417FE324} = {D014CED2-6018-4CF4-9957-93A3F9014364}
 		{4185989C-25DF-48E0-8450-B741F9A90BE7} = {30C428F1-84F8-49A5-8A3C-38887160807C}
+		{869A6571-60C8-44E7-92C5-ECC09C9D5ED0} = {30C428F1-84F8-49A5-8A3C-38887160807C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9EC590C-C973-4BFC-BA56-217A3BE7D64E}
