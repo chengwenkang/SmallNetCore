@@ -11,19 +11,48 @@ SmallNetCore是采用NET6搭建的一套轻量级后端开发项目,对于中小
 
 + 表现层 
   + SmallNetCore.UI
+    + Controllers 控制器
+    + appsettings.json 系统配置文件
+    + log4net.config 日志配置文件
+    + Program.cs 启动类
+
 + 业务逻辑层
   + SmallNetCore.IServices【用于IOC注入,面向接口编程】
   + SmallNetCore.Services
+    + Base 当前层的公用方法，*例如基类*
 + 数据库访问层
   + SmallNetCore.IRepository【用于IOC注入,面向接口编程】
   + SmallNetCore.Repository
+    + Base 当前层的公用方法，*例如基类*
 + 实体层
   + SmallNetCore.Models
-+ 其他
-  + SmallNetCore.Common【公共方法】
-  + SmallNetCore.Extensions【扩展层，主要用于一些公用的非业务逻辑层，例如,autofac的注入、automapper的构造等，但是像一些订单类、商品类的业务逻辑还是要放在SmallNetCore.Services层，最好不用弄混了】
-  + SmallNetCore.Remotes【远程服务调用层，主要用于一些第三方的服务封装，例如微信支付、阿里支付等第三方的服务】
+    + Base 当前层的公用方法
+    + Configs 配置集合
+      + CenterConfigs.cs 动态配置读取
+      + Consts.cs 常量的配置
+    + DBModels 数据表实体
+    + Entitys 公共的实体，*例如用户的登录实体，配置链接的实体等*
+    + Enums 枚举集合
+    + ViewModels Dto相关的实体
+      + Base 公共的实体，*例如一些基类定义*
+      + Request 所有请求的实体
+      + Response 所有返回的实体
 
++ 其他
+  + SmallNetCore.Common【公共方法层】
+    + ApIInfo Http请求相关
+    + Convets 各种数据转换
+    + Encrypt 加密相关
+    + Serialize 序列化相关
+    + Utils 其他方法
+    
+  + SmallNetCore.Extensions【扩展层】，*主要用于一些公用的**非业务**逻辑层，例如,autofac的注入、automapper的构造等，但是像一些订单类、商品类的业务逻辑还是要放在SmallNetCore.Services层，最好不用弄混了*
+    + AutoMapper AutoMapper相关的配置
+    + Filter 过滤器配置
+      + GlobalExceptionsFilter.cs 全局异常捕获
+      + MyActionFilterAttribute.cs 请求管道跟踪
+    + ServiceExtensions 服务注册相关扩展
+  + SmallNetCore.Remotes【远程服务调用层】，*主要用于一些第三方的服务封装，例如微信支付、阿里支付等第三方的服务*
 
 #### 安装使用教程
 
