@@ -78,7 +78,7 @@ SmallNetCore是采用NET6搭建的一套轻量级后端开发项目,对于中小
 
         SET FOREIGN_KEY_CHECKS = 1;
     ```
-+ 数据库库名称：SerondTestDb
++ 数据库库名称：SecondTestDb
 
     ```
      DROP TABLE IF EXISTS `order`;
